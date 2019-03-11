@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_UpRecordset" value="name:pro_id;datatype:int,name:cat_id;datatype:int,name:pro_name;datatype:string,name:detail;datatype:blob,name:price;datatype:int,name:quantity;datatype:int,name:imag;datatype:string" />
+	<infoitem key="UD_UpdateRecordset1" value="name:pro_id;datatype:int,name:cat_id;datatype:int,name:pro_name;datatype:string,name:detail;datatype:blob,name:price;datatype:int,name:quantity;datatype:int,name:imag;datatype:string" />
+	<infoitem key="UD_UpRecordset1" value="name:pro_id;datatype:int,name:cat_id;datatype:int,name:pro_name;datatype:string,name:detail;datatype:blob,name:price;datatype:int,name:quantity;datatype:int,name:imag;datatype:string" />
+	<infoitem key="UD_upRecordset1" value="name:pro_id;datatype:int,name:cat_id;datatype:int,name:pro_name;datatype:string,name:detail;datatype:blob,name:price;datatype:int,name:quantity;datatype:int,name:imag;datatype:string" />
+	<infoitem key="UD_URecordset1" value="name:pro_id;datatype:int,name:cat_id;datatype:int,name:pro_name;datatype:string,name:detail;datatype:blob,name:price;datatype:int,name:quantity;datatype:int,name:imag;datatype:string" />
+	<infoitem key="UD_Update_Recordset" value="name:pro_id;datatype:int,name:cat_id;datatype:int,name:pro_name;datatype:string,name:detail;datatype:blob,name:price;datatype:int,name:quantity;datatype:int,name:imag;datatype:string" />
+</info>
