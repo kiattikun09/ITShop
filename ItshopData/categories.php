@@ -68,37 +68,8 @@ $query_Cat = "SELECT * FROM categories";
 $Cat = mysql_query($query_Cat, $Myconnec) or die(mysql_error());
 $row_Cat = mysql_fetch_assoc($Cat);
 $totalRows_Cat = mysql_num_rows($Cat);
-?>
 
-<!--categories-add-->
-<?php if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
-}
-
+// catadd
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -118,7 +89,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   }
   header(sprintf("Location: %s", $insertGoTo));
 }
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,6 +101,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Remember to include jQuery :) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 </head>
 <?php include('check-login.php'); ?>
 <?php include('TopicsTeat.php'); ?>
@@ -182,9 +163,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
               <tr>
                 
                 <td><div align="center"><?php echo $row_Cat['cat_name']; ?></div></td>
-                <td width="28"><div align="center"><a href="categories-delete.php?cat_id=<?php echo $row_Cat['cat_id']; ?>">ลบ</a></div></td>
+                <td width="28"><div align="center"><a href="categories-delete.php?cat_id=<?php echo $row_Cat['cat_id']; ?>"><button  class="btn btn-danger"onclick="myFunction()">ลบ</button></a></div></td>
                 
-                <td width="44"><div align="center"><a href="categories-Up.php?cat_id=<?php echo $row_Cat['cat_id']; ?>">แก้ไข</a></div></td>
+                <td width="44"><div align="center"><a href="categories-Up.php?cat_id=<?php echo $row_Cat['cat_id']; ?>" rel="modal:open"><button  class="btn btn-primary">แก้ไข</button></a></div></td>
               </tr>
               <?php } while ($row_Cat = mysql_fetch_assoc($Cat)); ?>
           </tbody>
@@ -200,7 +181,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
             <th width="98"><div align="center">ประเภท id</div></th>
             <th width="152"><div align="center">แบรนด์</div></th>
             <th width="28"><div align="center"></div></th>
- 
+            <div class="container">
+			<th width="122"><a href="brand-add.php"><button type="button" class="btn btn-warning" >เพิ่ม</button></a></th>
             </tr>
           <tbody>
             <?php do { ?>
@@ -208,8 +190,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                
                 <td><div align="center"><?php echo $row_brand['cat_id']; ?></div></td>
                 <td><div align="center"><?php echo $row_brand['brand_name']; ?></div></td>
-                <td width="28"><div align="center"><a href="brand-delete.php?brand_id=<?php echo $row_brand['brand_id']; ?>">ลบ</a></div></td>
-                <td width="46"><div align="center"><a href="brand-Up.php?brand_id=<?php echo $row_brand['brand_id']; ?>">แก้ไข</a></div></td>
+                <td width="28"><div align="center"><a href="brand-delete.php?brand_id=<?php echo $row_brand['brand_id']; ?>"><button  class="btn btn-danger"onclick="myFunction()">ลบ</button></a></div></td>
+                <td width="46"><div align="center"><a href="brand-Up.php?brand_id=<?php echo $row_brand['brand_id']; ?>"><button  class="btn btn-primary">แก้ไข</button></a></div></td>
               </tr>
               <?php } while ($row_brand = mysql_fetch_assoc($brand)); ?>
           </tbody>
@@ -226,8 +208,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
              <th width="100"><div align="center">แบรนด์ id</div></th>
              <th width="100"><div align="center">ประเภท id</div></th>
              <th width="167"><div align="center">รุ่น</div></th>
-             <th width="121"><div align="center"></div></th>      
-      
+             <th width="167"><div align="center"></div></th>
+             <div class="container">
+			        <th width="122"><a href="gen-add.php"><button type="button" class="btn btn-warning" >เพิ่ม</button></a></th>
+             </div>
             </tr>
           <tbody>
             <?php do { ?>
@@ -236,8 +220,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                 <td><div align="center"><?php echo $row_gen['brand_id']; ?></div></td>
                 <td><div align="center"><?php echo $row_gen['cat_id']; ?></div></td>
                 <td><div align="center"><?php echo $row_gen['ge_name']; ?></div></td>
-                <td width="37"><div align="center"><a href="gen-delete.php?ge_id=<?php echo $row_gen['ge_id']; ?>">ลบ</a></div></td>
-                <td width="50"><div align="center"><a href="gen-Up.php?ge_id=ge_id">แก้ไข</a></div></td>
+                <td width="37"><div align="center"><a href="gen-delete.php?ge_id=<?php echo $row_gen['ge_id']; ?>"><button  class="btn btn-danger"onclick="myFunction()">ลบ</button></a></div></td>
+                <td width="50"><div align="center"><a href="gen-Up.php?ge_id=ge_id"><button  class="btn btn-primary">แก้ไข</button></a></div></td>
               </tr>
               <?php } while ($row_gen = mysql_fetch_assoc($gen)); ?>
           </tbody>
@@ -246,6 +230,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
     </div>
   </div>
 </div>
+
+<script>
+function myFunction() {
+  alert("ยืนยันการลบรายการนี้!!!");
+}
+</script>
 
 </body>
 </html>

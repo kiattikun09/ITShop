@@ -64,18 +64,18 @@ $totalRows_catset1 = mysql_num_rows($catset1);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 </head>
-
+<?php include("TopicsTeat.php")?>
 <body>
 <div align="center">
   <form id="form1" name="form1" method="POST" action="<?php echo $editFormAction; ?>">
     <p>
       <label for="brand-add"></label>
     ประเภท : 
-    <select name="categories" id="categories">
+    <td><select   name="categories" id="categories">
       <?php
 do {  
 ?>
-      <option value="<?php echo $row_catset1['cat_id']?>"><?php echo $row_catset1['cat_name']?></option>
+      <option  value="<?php echo $row_catset1['cat_id']?>"><?php echo $row_catset1['cat_name']?></option>
       <?php
 } while ($row_catset1 = mysql_fetch_assoc($catset1));
   $rows = mysql_num_rows($catset1);
@@ -84,14 +84,20 @@ do {
 	  $row_catset1 = mysql_fetch_assoc($catset1);
   }
 ?>
-    </select>
+    </select></td>
     brand :
-    <input type="text" name="brand-add" id="brand-add" />
-    <input type="submit" name="btnbrand" id="btnbrand" value="ตกลง" />
+    <input  type="text" name="brand-add" id="brand-add" />
+    <input type="submit" onclick="myFunction()" name="btnbrand" id="btnbrand" value="ตกลง" />
     <input type="hidden" name="MM_insert" value="form1" />
   </p>
   </form>
 </div>
+
+<script>
+function myFunction() {
+  alert("ยืนยันการเพิ่มแบรนด์");
+}
+</script>
 </body>
 </html>
 <?php

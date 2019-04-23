@@ -79,21 +79,21 @@ $totalRows_catRecordset1 = mysql_num_rows($catRecordset1);
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class="jumbotron text-center"></div>
+<?php include("TopicsTeat.php")?>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   <table align="center">
     <tr valign="baseline">
       <td nowrap align="right">Brand_id :</td>
       <td><?php echo $row_brandRecordset1['brand_id']; ?></td>
     </tr>
+    <th>&nbsp;</th>
     <tr valign="baseline">
       <td nowrap align="right">cat_id :</td>
-      <td><select name="cat_id" id="cat_id">
+      <td><select class="form-control" name="cat_id" id="cat_id">
         <?php
 do {  
 ?>
-        <option value="<?php echo $row_catRecordset1['cat_id']?>"<?php if (!(strcmp($row_catRecordset1['cat_id'], $row_brandRecordset1['cat_id']))) {echo "selected=\"selected\"";} ?>><?php echo $row_catRecordset1['cat_name']?></option>
+        <option  value="<?php echo $row_catRecordset1['cat_id']?>"<?php if (!(strcmp($row_catRecordset1['cat_id'], $row_brandRecordset1['cat_id']))) {echo "selected=\"selected\"";} ?>><?php echo $row_catRecordset1['cat_name']?></option>
         <?php
 } while ($row_catRecordset1 = mysql_fetch_assoc($catRecordset1));
   $rows = mysql_num_rows($catRecordset1);
@@ -104,19 +104,26 @@ do {
 ?>
       </select></td>
     </tr>
+    <th>&nbsp;</th>
     <tr valign="baseline">
       <td nowrap align="right">Brand_name :</td>
-      <td><input type="text" name="brand_name" value="<?php echo htmlentities($row_brandRecordset1['brand_name'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
+      <td><input type="text" class="form-control" name="brand_name" value="<?php echo htmlentities($row_brandRecordset1['brand_name'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
     </tr>
+    <th>&nbsp;</th>
     <tr valign="baseline">
       <td nowrap align="right">&nbsp;</td>
-      <td><input type="submit" value="Update record"></td>
+      <td><button type="submit"class="btn btn-primary" onclick="myFunction()" value="Update record" >ยืนยัน</button></td>
     </tr>
   </table>
   <input type="hidden" name="MM_update" value="form1">
   <input type="hidden" name="brand_id" value="<?php echo $row_brandRecordset1['brand_id']; ?>">
 </form>
 <p>&nbsp;</p>
+<script>
+function myFunction() {
+  alert("ยืนยันการอัพเดต");
+}
+</script>
 </body>
 </html>
 <?php

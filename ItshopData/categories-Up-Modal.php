@@ -63,52 +63,57 @@ $row_UpRecordset1 = mysql_fetch_assoc($UpRecordset1);
 $totalRows_UpRecordset1 = mysql_num_rows($UpRecordset1);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="notification_payment.css">
+    <script src="main.js"></script>
+    <script src="notification_payment.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="notification_payment.js"></script>
+    
+    <style>
+        img{
+            width:150px;
+            height:100%;
+        }
+    </style>
 </head>
 <body>
-  <?php include("TopicsTeat.php")?>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-      <h3>&nbsp;</h3>
-    </div>
-    <div class="col-sm-4">
-      <h4>&nbsp;
+<!-- <div class="container"> -->
+  <!-- <div class="row">-->
+      <div class="col-sm-3">
+      <!-- <h3>&nbsp;</h3>  -->
+    </div> 
+    <div class="col-sm-8">
+      
         <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
-          <table width="250" height="50" align="center">
-            <tr valign="baseline">
+          
+            <tr valign="baseline" align="center">
               <td height="28" align="right" nowrap>id:</td>
               <td><?php echo $row_UpRecordset1['cat_id']; ?></td>
-              <td><input type="text" class="form-control" name="cat_name" value="<?php echo htmlentities($row_UpRecordset1['cat_name'], ENT_COMPAT, 'utf-8'); ?>" size="25"></td>
-              <td><button type="submit" class="btn btn-primary"onclick="myFunction() value="Update" style="margin-left: 20px;">ยืนยัน</button></td>
+              <td><input type="text" name="cat_name" value="<?php echo htmlentities($row_UpRecordset1['cat_name'], ENT_COMPAT, 'utf-8'); ?>" size="14"></td>
+              <td><input type="submit" value="Update"></td>
             </tr>
-          </table>
+          
           <input type="hidden" name="MM_update" value="form1">
           <input type="hidden" name="cat_id" value="<?php echo $row_UpRecordset1['cat_id']; ?>">
         </form>
         <p>&nbsp;</p>
-      </h4>
+      
     </div>
-    <div class="col-sm-4">
-      <h3>&nbsp;</h3>
+    <!-- <div class="col-sm-4">
+      <h3>&nbsp;</h3> -->
     </div>
   </div>
 </div>
-
-<script>
-function myFunction() {
-  alert("ยืนยันการอัพเดต");
-}
-</script>
-
-
 </body>
 </html>
 <?php

@@ -4,7 +4,7 @@ function dwUpload($file,$path="./img-products/"){
 		@chmod($path.$file,0777);
 		return $file['name'];
 	}else{
-		return false;
+		return 2;
 	}
 }
 ?>
