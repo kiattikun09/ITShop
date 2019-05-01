@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 mysql_connect("localhost","root","0898061748");
 mysql_select_db("ITShop");
