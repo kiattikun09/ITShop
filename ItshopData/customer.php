@@ -62,13 +62,13 @@ $totalRows_CU = mysql_num_rows($CU);
         <table width="93%" height="69" class="table">
           <thead>
             <tr>
-              <th width="10%"><div align="center">user</div></th>
-              <th width="12%"><div align="center">Pass</div></th>
-              <th width="11%"><div align="center">Firstname</div></th>
-              <th width="13%"><div align="center">Lastname</div></th>
-              <th width="8%"><div align="center">Email</div></th>
-              <th width="32%"><div align="center">Address</div></th>
-              <th width="14%"><div align="center">Tel.</div></th>
+              <th width="10%"><div align="center"></div></th>
+              <th width="12%"><div align="center"></div></th>
+              <th width="11%"><div align="center"></div></th>
+              <th width="13%"><div align="center"></div></th>
+              <th width="8%"><div align="center"></div></th>
+              <th width="32%"><div align="center"></div></th>
+              <th width="14%"><div align="center"></div></th>
               <th>&nbsp;</th>
             </tr>
           </thead>

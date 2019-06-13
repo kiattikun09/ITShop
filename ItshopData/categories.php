@@ -117,7 +117,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-    <h2 align="left">ประเภทสินค้า    </h2>
+    <h2 align="left">ประเภทสินค้า</h2>
     <div align="left">
       <table width="209" class="well table-condensed">
         <thead>
